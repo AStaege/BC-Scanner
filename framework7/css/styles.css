@@ -190,7 +190,7 @@ i.icon-24-scan {
 @media (max-width: 603px) {
   /* line 5, ../sass/phone/_viewport.scss */
   #interactive.viewport {
-    width: 100%;
+    max-width: 100%;
     overflow: hidden;
   }
 
@@ -198,7 +198,6 @@ i.icon-24-scan {
   #interactive.viewport canvas, video {
     margin-top: -50px;
     max-width: 100%;
-    height: 400px;
   }
   /* line 15, ../sass/phone/_viewport.scss */
   #interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
