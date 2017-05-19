@@ -16,7 +16,7 @@ myApp.onPageInit('about', function (page) {
     //$$('.create-page').on('click', function () {
     //    createContentPage();
     //});
-    // quaggerei();
+    quaggerei();
 });
 
 function quaggerei (){
@@ -28,14 +28,14 @@ function quaggerei (){
                 if (err){
                     return self.handleError(err);
                 }
-                console.log("vor");
+                // TODO this is a onready callback func, but we never get here,
+                // so seems to be stuck in init, though camera works (led on)
                 App.initCameraSelection();
-                console.log("nach");
                 Quagga.start();
             });
         },
         handleError: function(err){
-            console.log(err);
+            console.log("hier gibts nen fehler: " + err);
         },
         initCameraSelection: function(){
             var streamLabel = Quagga.CameraAccess.getActiveStreamLabel();
@@ -58,7 +58,67 @@ function quaggerei (){
                     });
                 });
         },
+        inputMapper: {
+            inputStream: {
+                constraints: function(value){
+                    if (/^(\d+)x(\d+)$/.test(value)) {
+                        var values = value.split('x');
+                        return {
+                            width: {min: parseInt(values[0])},
+                            height: {min: parseInt(values[1])}
+                        };
+                    }
+                    return {
+                        deviceId: value
+                    };
+                }
+            },
+            numOfWorkers: function(value) {
+                return parseInt(value);
+            },
+            decoder: {
+                readers: function(value) {
+                    if (value === 'ean_extended') {
+                        return [{
+                            format: "ean_reader",
+                            config: {
+                                supplements: [
+                                    'ean_5_reader', 'ean_2_reader'
+                                ]
+                            }
+                        }];
+                    }
+                    return [{
+                        format: value + "_reader",
+                        config: {}
+                    }];
+                }
+            }
+        },
         state: {
+            inputStream: {
+                type : "LiveStream",
+                constraints: {
+                    width: {min: 640},
+                    height: {min: 480},
+                    facingMode: "environment",
+                    aspectRatio: {min: 1, max: 2}
+                }
+            },
+            locator: {
+                patchSize: "medium",
+                halfSample: true
+            },
+            numOfWorkers: 4,
+            decoder: {
+                readers : [{
+                    format: "code_128_reader",
+                    config: {}
+                }]
+            },
+            locate: true
+        },
+        /* state: {
             inputStream: {
                 type : "LiveStream",
                 constraints: {
@@ -83,7 +143,8 @@ function quaggerei (){
                 }]
             },
             locate: true
-        },
+        },*/
+        lastResult: null
     };
     App.init();
 }
