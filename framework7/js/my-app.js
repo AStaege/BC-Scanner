@@ -30,12 +30,34 @@ function quaggerei (){
                 }
                 // TODO this is a onready callback func, but we never get here,
                 // so seems to be stuck in init, though camera works (led on)
-                App.initCameraSelection();
+                App.attachListeners();
+                console.log("läuft");
                 Quagga.start();
             });
         },
         handleError: function(err){
             console.log("hier gibts nen fehler: " + err);
+        },
+        attachListeners: function() {
+            var self = this;
+
+            //self.initCameraSelection();
+            $$(".controls").on("click", "button.stop", function(e) {
+                e.preventDefault();
+                Quagga.stop();
+                //self._printCollectedResults();
+            });
+
+            /* $(".controls .reader-config-group").on("change", "input, select", function(e) {
+                e.preventDefault();
+                var $target = $(e.target),
+                    value = $target.attr("type") === "checkbox" ? $target.prop("checked") : $target.val(),
+                    name = $target.attr("name"),
+                    state = self._convertNameToState(name);
+
+                console.log("Value of "+ state + " changed to " + value);
+                self.setState(state, value);
+            });*/
         },
         initCameraSelection: function(){
             var streamLabel = Quagga.CameraAccess.getActiveStreamLabel();
@@ -99,8 +121,8 @@ function quaggerei (){
             inputStream: {
                 type : "LiveStream",
                 constraints: {
-                    width: {min: 800},
-                    height: {min: 600},
+                    width: {min: 640},
+                    height: {min: 480},
                     facingMode: "environment",
                     aspectRatio: {min: 1, max: 2}
                 }
@@ -113,6 +135,9 @@ function quaggerei (){
             decoder: {
                 readers : [{
                     format: "ean_reader",
+                    config: {}
+                },{
+                    format: "code_39_reader",
                     config: {}
                 }]
             },
