@@ -170,7 +170,8 @@ function quaggerei (){
     });
     Quagga.onDetected(function(result) {
         var code = result.codeResult.code;
-        console.log("code: " + code);
+        $$("#rescode").text(code);
+        // console.log("code: " + code);
 /*
         if (App.lastResult !== code) {
             App.lastResult = code;
