@@ -18,8 +18,7 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu:400,700|Cabin+Condensed:400,600");
 /* line 1, ../sass/_viewport.scss */
 #interactive.viewport {
-  width: 640px;
-  height: 480px;
+  width: 100%;
 }
 
 /* line 6, ../sass/_viewport.scss */
