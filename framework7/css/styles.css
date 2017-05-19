@@ -191,8 +191,7 @@ i.icon-24-scan {
 @media (max-width: 603px) {
   /* line 5, ../sass/phone/_viewport.scss */
   #interactive.viewport {
-    width: 300px;
-    height: 300px;
+    width: 100%;
     overflow: hidden;
   }
 
