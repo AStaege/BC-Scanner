@@ -16,6 +16,10 @@ myApp.onPageInit('about', function (page) {
     //$$('.create-page').on('click', function () {
     //    createContentPage();
     //});
+    // quaggerei();
+});
+
+function quaggerei (){
     var App = {
         init: function(){
             var self = this;
@@ -82,7 +86,7 @@ myApp.onPageInit('about', function (page) {
         },
     };
     App.init();
-});
+}
 
 var dynamicPageIndex = 0;
 function createContentPage() {
