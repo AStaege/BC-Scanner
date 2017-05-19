@@ -106,7 +106,7 @@
   text-align: center;
   word-wrap: break-word;
   height: 40px;
-  margin: 0px;
+  margin: 0;
 }
 /* line 83, ../sass/_viewport.scss */
 #result_strip > ul:after {
@@ -190,14 +190,14 @@ i.icon-24-scan {
 @media (max-width: 603px) {
   /* line 5, ../sass/phone/_viewport.scss */
   #interactive.viewport {
-    max-width: 100%;
+    width: 100%;
     overflow: hidden;
   }
 
   /* line 11, ../sass/phone/_viewport.scss */
   #interactive.viewport canvas, video {
     margin-top: -50px;
-    width: 300px;
+    max-width: 100%;
     height: 400px;
   }
   /* line 15, ../sass/phone/_viewport.scss */
