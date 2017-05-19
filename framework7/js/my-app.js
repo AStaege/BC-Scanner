@@ -121,8 +121,8 @@ function quaggerei (){
             inputStream: {
                 type : "LiveStream",
                 constraints: {
-                    width: {min: 800},
-                    height: {min: 600},
+                    width: {min: 1280},
+                    height: {min: 720},
                     facingMode: "environment",
                     aspectRatio: {min: 1, max: 2}
                 }

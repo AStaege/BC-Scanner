@@ -23,9 +23,8 @@
 
 /* line 6, ../sass/_viewport.scss */
 #interactive.viewport canvas, video {
+  max-width: 100%;
   float: left;
-  width: 640px;
-  height: 480px;
 }
 /* line 10, ../sass/_viewport.scss */
 #interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
