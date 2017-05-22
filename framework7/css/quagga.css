@@ -19,19 +19,22 @@
 /* line 6, ../sass/_viewport.scss */
 #interactive.viewport canvas, video {
   max-width: 100%;
-  float: left;
+  /* float: left; */
 }
 /* line 10, ../sass/_viewport.scss */
 #interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
   max-width: 100%;
-  margin-left: -640px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* margin-left: -640px; */
 }
 
 /* line 16, ../sass/_viewport.scss */
 .controls fieldset {
   border: none;
-  float: left;
-  margin: 2px;
+  /*float: left;
+  margin: 2px;*/
 
 }
 /* line 19, ../sass/_viewport.scss */
@@ -196,12 +199,12 @@ i.icon-24-scan {
 
   /* line 11, ../sass/phone/_viewport.scss */
   #interactive.viewport canvas, video {
-    margin-top: -50px;
+    /* margin-top: -50px; */
     max-width: 100%;
   }
   /* line 15, ../sass/phone/_viewport.scss */
   #interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
-    margin-left: -300px;
+    /* margin-left: -300px; */
     max-width: 100%;
   }
 
