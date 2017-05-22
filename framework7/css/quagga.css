@@ -30,6 +30,9 @@
 /* line 16, ../sass/_viewport.scss */
 .controls fieldset {
   border: none;
+  float: left;
+  margin: 2px;
+
 }
 /* line 19, ../sass/_viewport.scss */
 .controls .input-group {
