@@ -171,7 +171,7 @@ function quaggerei (){
     Quagga.onDetected(function(result) {
         var code = result.codeResult.code;
         var codeFormat = result.codeResult.format;
-        $$("#rescode").text(codeFormat + ": " + code);
+        $$("#rescode").text(": " + code);
         // console.log("code: " + code);
 /*
         if (App.lastResult !== code) {
