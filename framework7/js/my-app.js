@@ -100,7 +100,10 @@ function quaggerei (){
             },
             locator: {
                 patchSize: "x-large",
-                halfSample: true
+                halfSample: true,
+                debug: {
+                    showCanvas: true
+                }
             },
             numOfWorkers: 4,
             decoder: {
@@ -116,7 +119,7 @@ function quaggerei (){
                     drawScanline: false,
                     showFrequency: false,
                     showPattern: false
-                }
+                },
             },
             locate: true
         },
