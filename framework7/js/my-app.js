@@ -164,13 +164,14 @@ function quaggerei (){
             }
 
             if (result.codeResult && result.codeResult.code) {
-                Quagga.ImageDebug.drawPath(result.line, {x: 'x', y: 'y'}, drawingCtx, {color: 'red', lineWidth: 3});
+                Quagga.ImageDebug.drawPath(result.line, {x: 'x', y: 'y'}, drawingCtx, {color: '#F00', lineWidth: 3});
             }
         }
     });
     Quagga.onDetected(function(result) {
         var code = result.codeResult.code;
-        $$("#rescode").text(code);
+        var codeFormat = result.codeResult.format;
+        $$("#rescode").text(codeFormat + ": " + code);
         // console.log("code: " + code);
 /*
         if (App.lastResult !== code) {

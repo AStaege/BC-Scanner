@@ -170,7 +170,6 @@ i.icon-24-scan {
   /* tablet styles */
 }
 
-
 @media (max-width: 603px) {
   /* line 2, ../sass/phone/_core.scss */
   #container {
@@ -200,6 +199,7 @@ i.icon-24-scan {
   /* line 15, ../sass/phone/_viewport.scss */
   #interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
     margin-left: -300px;
+    max-width: 100%;
   }
 
   /* line 20, ../sass/phone/_viewport.scss */
