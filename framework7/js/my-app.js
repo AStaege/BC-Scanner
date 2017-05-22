@@ -102,7 +102,13 @@ function quaggerei (){
                 patchSize: "x-large",
                 halfSample: true,
                 debug: {
-                    showCanvas: true
+                    showCanvas: true,
+                    showPatches: false,
+                    showFoundPatches: false,
+                    showSkeleton: false,
+                    showLabels: false,
+                    showPatchLabels: false,
+                    showRemainingPatchLabels: false,
                 }
             },
             numOfWorkers: 4,
