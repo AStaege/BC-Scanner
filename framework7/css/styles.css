@@ -23,7 +23,7 @@
 }
 /* line 10, ../sass/_viewport.scss */
 #interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
-  max-width: inherit;
+  max-width: 100%;
   margin-left: -640px;
 }
 
@@ -166,10 +166,10 @@ i.icon-24-scan {
   vertical-align: text-top;
 }
 
-/* @media (min-width: 604px) and (max-width: 1024px) {
+@media (min-width: 604px) and (max-width: 1024px) {
   /* tablet styles */
 }
-*/
+
 
 @media (max-width: 603px) {
   /* line 2, ../sass/phone/_core.scss */
