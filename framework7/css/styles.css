@@ -175,7 +175,7 @@ i.icon-24-scan {
 }
 */
 
-@media (max-width: 1080px) {
+@media (max-width: 603px) {
   /* line 2, ../sass/phone/_core.scss */
   #container {
     width: 300px;
@@ -189,7 +189,7 @@ i.icon-24-scan {
     width: 180px;
   }
 }
-@media (max-width: 1080px) {
+@media (max-width: 603px) {
   /* line 5, ../sass/phone/_viewport.scss */
   #interactive.viewport {
     max-width: 100%;
