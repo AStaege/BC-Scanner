@@ -104,7 +104,7 @@ function quaggerei (){
                 debug: {
                     showCanvas: true,
                     showPatches: true,
-                    showFoundPatches: truee,
+                    showFoundPatches: true,
                     showSkeleton: true,
                     showLabels: true,
                     showPatchLabels: true,
