@@ -46,38 +46,10 @@ function quaggerei (){
                 Quagga.stop();
                 //self._printCollectedResults();
             });
+            $$(".navbar-inner").on("click", "a.back", function(e){
+                Quagga.stop();
+            });
 
-            /* $(".controls .reader-config-group").on("change", "input, select", function(e) {
-                e.preventDefault();
-                var $target = $(e.target),
-                    value = $target.attr("type") === "checkbox" ? $target.prop("checked") : $target.val(),
-                    name = $target.attr("name"),
-                    state = self._convertNameToState(name);
-
-                console.log("Value of "+ state + " changed to " + value);
-                self.setState(state, value);
-            });*/
-        },
-        initCameraSelection: function(){
-            var streamLabel = Quagga.CameraAccess.getActiveStreamLabel();
-            console.log("initC");
-            return Quagga.CameraAccess.enumerateVideoDevices()
-                .then(function(devices) {
-                    function pruneText(text) {
-                        return text.length > 30 ? text.substr(0, 30) : text;
-                    }
-                    var $deviceSelection = document.getElementById("deviceSelection");
-                    while ($deviceSelection.firstChild) {
-                        $deviceSelection.removeChild($deviceSelection.firstChild);
-                    }
-                    devices.forEach(function(device) {
-                        var $option = document.createElement("option");
-                        $option.value = device.deviceId || device.id;
-                        $option.appendChild(document.createTextNode(pruneText(device.label || device.deviceId || device.id)));
-                        $option.selected = streamLabel === device.label;
-                        $deviceSelection.appendChild($option);
-                    });
-                });
         },
         inputMapper: {
             inputStream: {
@@ -120,8 +92,8 @@ function quaggerei (){
             inputStream: {
                 type : "LiveStream",
                 constraints: {
-                    width: {min: 640},
-                    height: {min: 480},
+                    width: {min: 1280},
+                    height: {min: 720},
                     facingMode: "environment",
                     aspectRatio: {min: 1, max: 2}
                 }
