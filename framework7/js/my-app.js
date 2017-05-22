@@ -11,7 +11,7 @@ var mainView = myApp.addView('.view-main', {
 });
 
 // Callbacks to run specific code for specific pages, for example for About page:
-myApp.onPageInit('about', function (page) {
+myApp.onPageInit('about', function () {
     // run createContentPage func after link was clicked
     //$$('.create-page').on('click', function () {
     //    createContentPage();
@@ -31,7 +31,6 @@ function quaggerei (){
                 // TODO this is a onready callback func, but we never get here,
                 // so seems to be stuck in init, though camera works (led on)
                 App.attachListeners();
-                console.log("läuft");
                 Quagga.start();
             });
         },
@@ -39,7 +38,7 @@ function quaggerei (){
             console.log("hier gibts nen fehler: " + err);
         },
         attachListeners: function() {
-            var self = this;
+            //var self = this;
 
             //self.initCameraSelection();
             $$(".controls").on("click", "button.stop", function(e) {
