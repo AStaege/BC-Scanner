@@ -23,6 +23,7 @@
 }
 /* line 10, ../sass/_viewport.scss */
 #interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
+  max-width: inherit;
   margin-left: -640px;
 }
 
