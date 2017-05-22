@@ -105,17 +105,17 @@ function quaggerei (){
             numOfWorkers: 4,
             decoder: {
                 readers : [{
-                    format: "ean_reader",
+                    format: "code_39_reader",
                     config: {}
                 },{
-                    format: "code_39_reader",
+                    format: "ean_reader",
                     config: {}
                 }],
                 debug: {
                     drawBoundingBox: false,
-                    drawScanline: true,
-                    showFrequency: true,
-                    showPattern: true
+                    drawScanline: false,
+                    showFrequency: false,
+                    showPattern: false
                 }
             },
             locate: true
