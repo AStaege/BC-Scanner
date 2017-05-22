@@ -201,7 +201,7 @@ i.icon-24-scan {
   }
   /* line 15, ../sass/phone/_viewport.scss */
   #interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
-    margin-left: -300px;
+    /* margin-left: -300px; */
     max-width: 100%;
   }
 
