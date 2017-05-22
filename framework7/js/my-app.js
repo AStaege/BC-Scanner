@@ -103,12 +103,17 @@ function quaggerei (){
                 halfSample: true,
                 debug: {
                     showCanvas: true,
-                    showPatches: false,
-                    showFoundPatches: false,
-                    showSkeleton: false,
-                    showLabels: false,
-                    showPatchLabels: false,
-                    showRemainingPatchLabels: false,
+                    showPatches: true,
+                    showFoundPatches: truee,
+                    showSkeleton: true,
+                    showLabels: true,
+                    showPatchLabels: true,
+                    showRemainingPatchLabels: true,
+                    boxFromPatches: {
+                        showTransformed: true,
+                        showTransformedBox: true,
+                        showBB: true
+                    }
                 }
             },
             numOfWorkers: 4,
