@@ -112,7 +112,10 @@ function quaggerei (){
                     config: {}
                 }],
                 debug: {
-                    drawBoundingBox: true
+                    drawBoundingBox: false,
+                    drawScanline: true,
+                    showFrequency: true,
+                    showPattern: true
                 }
             },
             locate: true
