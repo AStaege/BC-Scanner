@@ -170,10 +170,12 @@ i.icon-24-scan {
   vertical-align: text-top;
 }
 
-@media (min-width: 604px) and (max-width: 1024px) {
+/* @media (min-width: 604px) and (max-width: 1024px) {
   /* tablet styles */
 }
-@media (max-width: 603px) {
+*/
+
+@media (max-width: 1080px) {
   /* line 2, ../sass/phone/_core.scss */
   #container {
     width: 300px;
@@ -187,7 +189,7 @@ i.icon-24-scan {
     width: 180px;
   }
 }
-@media (max-width: 603px) {
+@media (max-width: 1080px) {
   /* line 5, ../sass/phone/_viewport.scss */
   #interactive.viewport {
     max-width: 100%;
