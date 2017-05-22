@@ -92,8 +92,8 @@ function quaggerei (){
             inputStream: {
                 type : "LiveStream",
                 constraints: {
-                    width: {min: 640},
-                    height: {min: 480},
+                    width: {min: 1280},
+                    height: {min: 720},
                     facingMode: "environment",
                     aspectRatio: {min: 1, max: 2}
                 }
@@ -110,13 +110,7 @@ function quaggerei (){
                 },{
                     format: "ean_reader",
                     config: {}
-                }],
-                debug: {
-                    drawBoundingBox: false,
-                    drawScanline: false,
-                    showFrequency: false,
-                    showPattern: false
-                },
+                }]
             },
             locate: true
         },
