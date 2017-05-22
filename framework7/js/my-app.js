@@ -110,7 +110,10 @@ function quaggerei (){
                 },{
                     format: "code_39_reader",
                     config: {}
-                }]
+                }],
+                debug: {
+                    drawBoundingBox: true
+                }
             },
             locate: true
         },
