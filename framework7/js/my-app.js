@@ -148,15 +148,17 @@ function quaggerei (){
         $.ajax({
             url: wholeUrl,
             success: function(result){
-                console.log("es ist etwas zurück gekommen");
-                console.log(typeof result);
+                var stu = "es ist etwas zurück gekommen\n" + err;
+                console.log(stu);
+                $$("#responses").text(stu);
             },
             data: {
                 barcode: true
             },
             error: function(err){
-                console.log("hat nicht geklappt");
-                console.log(err);
+                var st = "hat nicht geklappt\n" + err;
+                console.log(st);
+                $$("#responses").text(st);
             }
         });
         // console.log("code: " + code);
