@@ -4,8 +4,10 @@ var myApp = new Framework7();
 // Export selectors engine
 var $$ = Dom7;
 
-$$(document).cookie = "x-app=5kbts4hn5u8b3je6p24c2qaot6";
-
+document.cookie = "x-app=5kbts4hn5u8b3je6p24c2qaot6";
+document.cookie = "x-ref=dbfc4344-1e93-4855-84ed-400a6df42a3e";
+document.cookie = "path='/shopsuite/warehouse/items/'";
+console.log(document.cookie);
 // Add view
 var mainView = myApp.addView('.view-main', {
     // Because we use fixed-through navbar we can enable dynamic navbar
@@ -22,46 +24,33 @@ myApp.onPageInit('about', function () {
 });
 
 myApp.onPageInit('services', function () {
-    // run createContentPage func after link was clicked
-    //$$('.create-page').on('click', function () {
-    //    createContentPage();
-    //});
-    sendAjax();
+    //sendAjax();
 });
 
 // Callbacks to run specific code for specific pages, for example for About page:
 var sendAjax = function () {
     var wholeUrl = "https://www.connox.de/shopsuite/warehouse/items/8718164877636?barcode=true";
-    console.log("schicke ab");
-    /*    $$.ajax({
-     url: wholeUrl,
-     success: function (result) {
-     var stu = "es ist etwas zurück gekommen\n" + result;
-     console.log(stu);
-     $$("#responses").text(stu);
-     },
-     data: {
-     barcode: true
-     },
-     error: function (err) {
-     var st = "hat nicht geklappt\n" + err;
-     console.log(st);
-     $$("#responses").text(st);
-     }
-     });*/
-    $$.getJSON(wholeUrl, function (result) {
-            var stu = "es ist etwas zurück gekommen\n" + result;
+    f7ajax(wholeUrl);
+};
+
+function f7ajax (wholeUrl){
+    $$.ajax({
+        url: wholeUrl,
+        data: {
+            barcode: true
+        },
+        success: function (xhr, status) {
+            var stu = "es ist etwas zurück gekommen\nstatus: " + xhr.status;
             console.log(stu);
             $$("#responses").text(stu);
         },
-        function (err) {
-            var st = "hat nicht geklappt\n" + err;
+        error: function (xhr, status) {
+            var st = "anfrage hat einen fehler geworfen\nstatus: " + xhr.status;
             console.log(st);
             $$("#responses").text(st);
         }
-    );
-    console.log("abgeschickt");
-};
+    });
+}
 
 function quaggerei() {
     var App = {
@@ -187,19 +176,6 @@ function quaggerei() {
         var code = result.codeResult.code;
         var codeFormat = result.codeResult.format;
         $$("#rescode").text(codeFormat + ": " + code);
-        // var wholeUrl = "https://www.connox.de/shopsuite/warehouse/items/" + code + "?barcode=true";
-        // console.log("code: " + code);
-        /*
-         if (App.lastResult !== code) {
-         App.lastResult = code;
-         var $node = null, canvas = Quagga.canvas.dom.image;
-
-         $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
-         $node.find("img").attr("src", canvas.toDataURL());
-         $node.find("h4.code").html(code);
-         $("#result_strip ul.thumbnails").prepend($node);
-         }
-         */
     });
     App.init();
 }
