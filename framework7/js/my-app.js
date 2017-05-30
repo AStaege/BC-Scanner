@@ -152,7 +152,7 @@ function quaggerei (){
                 console.log(typeof result);
             },
             data: {
-                barcode: true
+                barcode: true,
             }
         });
         // console.log("code: " + code);
