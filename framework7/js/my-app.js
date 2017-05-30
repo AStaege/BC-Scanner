@@ -129,6 +129,12 @@ function quaggerei() {
                     height: {min: 720},
                     facingMode: "environment",
                     aspectRatio: {min: 1, max: 2}
+                },
+                area: {
+                    top: "0%",
+                    right: "0%",
+                    left: "0%",
+                    bottom: "0%",
                 }
             },
             locator: {
