@@ -4,6 +4,8 @@ var myApp = new Framework7();
 // Export selectors engine
 var $$ = Dom7;
 
+$$(document).cookie = "x-app=5kbts4hn5u8b3je6p24c2qaot6";
+
 // Add view
 var mainView = myApp.addView('.view-main', {
     // Because we use fixed-through navbar we can enable dynamic navbar
@@ -16,17 +18,45 @@ myApp.onPageInit('about', function () {
     //$$('.create-page').on('click', function () {
     //    createContentPage();
     //});
-    document.cookie = "x-app=5kbts4hn5u8b3je6p24c2qaot6";
     quaggerei();
 });
 
-function quaggerei (){
+myApp.onPageInit('services', function () {
+    // run createContentPage func after link was clicked
+    //$$('.create-page').on('click', function () {
+    //    createContentPage();
+    //});
+    sendAjax();
+});
+
+// Callbacks to run specific code for specific pages, for example for About page:
+var sendAjax = function () {
+    $.ajax({
+        url: wholeUrl,
+        success: function (result) {
+            var stu = "es ist etwas zurück gekommen\n" + result;
+            console.log(stu);
+            $$("#responses").text(stu);
+        },
+        data: {
+            barcode: true
+        },
+        error: function (err) {
+            var st = "hat nicht geklappt\n" + err;
+            console.log(st);
+            $$("#responses").text(st);
+        }
+    });
+
+};
+
+function quaggerei() {
     var App = {
-        init: function(){
+        init: function () {
             var self = this;
 
-            Quagga.init(this.state, function(err){
-                if (err){
+            Quagga.init(this.state, function (err) {
+                if (err) {
                     return self.handleError(err);
                 }
                 // TODO this is a onready callback func, but we never get here,
@@ -35,26 +65,26 @@ function quaggerei (){
                 Quagga.start();
             });
         },
-        handleError: function(err){
+        handleError: function (err) {
             console.log("hier gibts nen fehler: " + err);
         },
-        attachListeners: function() {
+        attachListeners: function () {
             //var self = this;
 
             //self.initCameraSelection();
-            $$(".controls").on("click", "button.stop", function(e) {
+            $$(".controls").on("click", "button.stop", function (e) {
                 e.preventDefault();
                 Quagga.stop();
                 //self._printCollectedResults();
             });
-            $$(".navbar-inner").on("click", "a.back", function(e){
+            $$(".navbar-inner").on("click", "a.back", function (e) {
                 Quagga.stop();
             });
 
         },
         inputMapper: {
             inputStream: {
-                constraints: function(value){
+                constraints: function (value) {
                     if (/^(\d+)x(\d+)$/.test(value)) {
                         var values = value.split('x');
                         return {
@@ -67,11 +97,11 @@ function quaggerei (){
                     };
                 }
             },
-            numOfWorkers: function(value) {
+            numOfWorkers: function (value) {
                 return parseInt(value);
             },
             decoder: {
-                readers: function(value) {
+                readers: function (value) {
                     if (value === 'ean_extended') {
                         return [{
                             format: "ean_reader",
@@ -91,7 +121,7 @@ function quaggerei (){
         },
         state: {
             inputStream: {
-                type : "LiveStream",
+                type: "LiveStream",
                 constraints: {
                     width: {min: 1280},
                     height: {min: 720},
@@ -105,10 +135,10 @@ function quaggerei (){
             },
             numOfWorkers: 4,
             decoder: {
-                readers : [{
+                readers: [{
                     format: "code_39_reader",
                     config: {}
-                },{
+                }, {
                     format: "ean_reader",
                     config: {}
                 }]
@@ -117,7 +147,7 @@ function quaggerei (){
         },
         lastResult: null
     };
-    Quagga.onProcessed(function(result) {
+    Quagga.onProcessed(function (result) {
         var drawingCtx = Quagga.canvas.ctx.overlay,
             drawingCanvas = Quagga.canvas.dom.overlay;
 
@@ -140,39 +170,23 @@ function quaggerei (){
             }
         }
     });
-    Quagga.onDetected(function(result) {
+    Quagga.onDetected(function (result) {
         var code = result.codeResult.code;
         var codeFormat = result.codeResult.format;
         $$("#rescode").text(codeFormat + ": " + code);
         var wholeUrl = "https://www.connox.de/shopsuite/warehouse/items/" + code + "?barcode=true";
-        $.ajax({
-            url: wholeUrl,
-            success: function(result){
-                var stu = "es ist etwas zurück gekommen\n" + err;
-                console.log(stu);
-                $$("#responses").text(stu);
-            },
-            data: {
-                barcode: true
-            },
-            error: function(err){
-                var st = "hat nicht geklappt\n" + err;
-                console.log(st);
-                $$("#responses").text(st);
-            }
-        });
         // console.log("code: " + code);
-/*
-        if (App.lastResult !== code) {
-            App.lastResult = code;
-            var $node = null, canvas = Quagga.canvas.dom.image;
+        /*
+         if (App.lastResult !== code) {
+         App.lastResult = code;
+         var $node = null, canvas = Quagga.canvas.dom.image;
 
-            $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
-            $node.find("img").attr("src", canvas.toDataURL());
-            $node.find("h4.code").html(code);
-            $("#result_strip ul.thumbnails").prepend($node);
-        }
-        */
+         $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
+         $node.find("img").attr("src", canvas.toDataURL());
+         $node.find("h4.code").html(code);
+         $("#result_strip ul.thumbnails").prepend($node);
+         }
+         */
     });
     App.init();
 }
