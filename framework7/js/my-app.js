@@ -65,10 +65,28 @@ function quaggerei() {
                 // so seems to be stuck in init, though camera works (led on)
                 App.attachListeners();
                 Quagga.start();
+                App.attachViewers();
             });
         },
         handleError: function (err) {
             console.log("hier gibts nen fehler: " + err);
+        },
+        attachViewers: function() {
+            var iniv = document.getElementsByTagName("video")[0];
+            $$("#resolvid").text(iniv.videoWidth + "x" + iniv.videoHeight);
+
+            var inic = $$(".content-block-inner canvas.drawingBuffer");
+            $$("#resolcan").text(inic.attr("width") + "x" + inic.attr("height"));
+
+            $$(".content-block-inner").on("change", "video", function(e){
+                var cbiv = document.getElementsByTagName("video")[0];
+                $$("#resolvid").text(cbiv.videoWidth + "x" + cbiv.videoHeight);
+            });
+
+            $$(".content-block-inner").on("change", "canvas.drawingBuffer", function(e){
+                var cbiv = $$(".content-block-inner canvas.drawingBuffer");
+                $$("#resolcan").text(cbiv.attr("width") + "x" + cbiv.attr("height"));
+            });
         },
         attachListeners: function () {
             //var self = this;
@@ -82,7 +100,6 @@ function quaggerei() {
             $$(".navbar-inner").on("click", "a.back", function (e) {
                 Quagga.stop();
             });
-
         },
         inputMapper: {
             inputStream: {
