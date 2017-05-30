@@ -16,6 +16,7 @@ myApp.onPageInit('about', function () {
     //$$('.create-page').on('click', function () {
     //    createContentPage();
     //});
+    document.cookie = "x-app=5kbts4hn5u8b3je6p24c2qaot6";
     quaggerei();
 });
 
@@ -92,8 +93,8 @@ function quaggerei (){
             inputStream: {
                 type : "LiveStream",
                 constraints: {
-                    width: {min: 1280},
-                    height: {min: 720},
+                    width: {min: 640},
+                    height: {min: 480},
                     facingMode: "environment",
                     aspectRatio: {min: 1, max: 2}
                 }
@@ -143,6 +144,17 @@ function quaggerei (){
         var code = result.codeResult.code;
         var codeFormat = result.codeResult.format;
         $$("#rescode").text(codeFormat + ": " + code);
+        var wholeUrl = "https://www.connox.de/shopsuite/warehouse/items/" + code + "?barcode=true";
+        $.ajax({
+            url: wholeUrl,
+            success: function(result){
+                console.log("es ist etwas zurück gekommen");
+                console.log(typeof result);
+            },
+            data: {
+                barcode: true
+            }
+        });
         // console.log("code: " + code);
 /*
         if (App.lastResult !== code) {
