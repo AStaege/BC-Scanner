@@ -93,8 +93,8 @@ function quaggerei (){
             inputStream: {
                 type : "LiveStream",
                 constraints: {
-                    width: {min: 640},
-                    height: {min: 480},
+                    width: {min: 1280},
+                    height: {min: 720},
                     facingMode: "environment",
                     aspectRatio: {min: 1, max: 2}
                 }
@@ -152,7 +152,11 @@ function quaggerei (){
                 console.log(typeof result);
             },
             data: {
-                barcode: true,
+                barcode: true
+            },
+            error: function(err){
+                console.log("hat nicht geklappt");
+                console.log(err);
             }
         });
         // console.log("code: " + code);
