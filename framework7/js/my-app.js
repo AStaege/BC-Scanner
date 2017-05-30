@@ -33,22 +33,33 @@ myApp.onPageInit('services', function () {
 var sendAjax = function () {
     var wholeUrl = "https://www.connox.de/shopsuite/warehouse/items/8718164877636?barcode=true";
     console.log("schicke ab");
-    $.ajax({
-        url: wholeUrl,
-        success: function (result) {
+    /*    $$.ajax({
+     url: wholeUrl,
+     success: function (result) {
+     var stu = "es ist etwas zurück gekommen\n" + result;
+     console.log(stu);
+     $$("#responses").text(stu);
+     },
+     data: {
+     barcode: true
+     },
+     error: function (err) {
+     var st = "hat nicht geklappt\n" + err;
+     console.log(st);
+     $$("#responses").text(st);
+     }
+     });*/
+    $$.getJSON(wholeUrl, function (result) {
             var stu = "es ist etwas zurück gekommen\n" + result;
             console.log(stu);
             $$("#responses").text(stu);
         },
-        data: {
-            barcode: true
-        },
-        error: function (err) {
+        function (err) {
             var st = "hat nicht geklappt\n" + err;
             console.log(st);
             $$("#responses").text(st);
         }
-    });
+    );
     console.log("abgeschickt");
 };
 
