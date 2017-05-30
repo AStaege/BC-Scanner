@@ -4,10 +4,10 @@ var myApp = new Framework7();
 // Export selectors engine
 var $$ = Dom7;
 
-document.cookie = "x-app=5kbts4hn5u8b3je6p24c2qaot6";
-document.cookie = "x-ref=dbfc4344-1e93-4855-84ed-400a6df42a3e";
-document.cookie = "path='/shopsuite/warehouse/items/'";
-console.log(document.cookie);
+// document.cookie = "x-app=5kbts4hn5u8b3je6p24c2qaot6";
+// document.cookie = "x-ref=dbfc4344-1e93-4855-84ed-400a6df42a3e";
+// document.cookie = "path='/shopsuite/warehouse/items/'";
+// console.log(document.cookie);
 // Add view
 var mainView = myApp.addView('.view-main', {
     // Because we use fixed-through navbar we can enable dynamic navbar
@@ -125,8 +125,8 @@ function quaggerei() {
             inputStream: {
                 type: "LiveStream",
                 constraints: {
-                    width: {min: 1280},
-                    height: {min: 720},
+                    width: {min: 640},
+                    height: {min: 480},
                     facingMode: "environment",
                     aspectRatio: {min: 1, max: 2}
                 }
