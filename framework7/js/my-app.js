@@ -31,6 +31,8 @@ myApp.onPageInit('services', function () {
 
 // Callbacks to run specific code for specific pages, for example for About page:
 var sendAjax = function () {
+    var wholeUrl = "https://www.connox.de/shopsuite/warehouse/items/8718164877636?barcode=true";
+    console.log("schicke ab");
     $.ajax({
         url: wholeUrl,
         success: function (result) {
@@ -47,7 +49,7 @@ var sendAjax = function () {
             $$("#responses").text(st);
         }
     });
-
+    console.log("abgeschickt");
 };
 
 function quaggerei() {
@@ -174,7 +176,7 @@ function quaggerei() {
         var code = result.codeResult.code;
         var codeFormat = result.codeResult.format;
         $$("#rescode").text(codeFormat + ": " + code);
-        var wholeUrl = "https://www.connox.de/shopsuite/warehouse/items/" + code + "?barcode=true";
+        // var wholeUrl = "https://www.connox.de/shopsuite/warehouse/items/" + code + "?barcode=true";
         // console.log("code: " + code);
         /*
          if (App.lastResult !== code) {
