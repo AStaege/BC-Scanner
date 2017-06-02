@@ -14,42 +14,43 @@ var mainView = myApp.addView('.view-main', {
     dynamicNavbar: true
 });
 
-// Callbacks to run specific code for specific pages, for example for About page:
 myApp.onPageInit('about', function () {
-    // run createContentPage func after link was clicked
-    //$$('.create-page').on('click', function () {
-    //    createContentPage();
-    //});
     quaggerei();
 });
 
 myApp.onPageInit('services', function () {
-    //sendAjax();
+    var wholeUrl = "https://www.connox.de/shopsuite/warehouse/items/8718164877636";
+    f7ajax(wholeUrl);
 });
 
-// Callbacks to run specific code for specific pages, for example for About page:
-var sendAjax = function () {
-    var wholeUrl = "https://www.connox.de/shopsuite/warehouse/items/8718164877636?barcode=true";
+/*
+$$(".list-block").on("click", "[href='about.html']", function(){
+
+    quaggerei();
+});
+
+$$(".list-block").on("click", "[href='services.html']", function(){
+    var wholeUrl = "https://www.connox.de/shopsuite/warehouse/items/8718164877636";
     f7ajax(wholeUrl);
-};
+});
+*/
 
 function f7ajax (wholeUrl){
-    $$.ajax({
-        url: wholeUrl,
-        data: {
+    $$.getJSON(wholeUrl,
+        {
             barcode: true
         },
-        success: function (xhr, status) {
-            var stu = "es ist etwas zurück gekommen\nstatus: " + xhr.status;
+        function (xhr, status) {
+            var stu = "es ist etwas zurück gekommen\n"+wholeUrl+"\nstatus: " + xhr;
             console.log(stu);
             $$("#responses").text(stu);
         },
-        error: function (xhr, status) {
+        function (xhr, status) {
             var st = "anfrage hat einen fehler geworfen\nstatus: " + xhr.status;
             console.log(st);
             $$("#responses").text(st);
         }
-    });
+    );
 }
 
 function quaggerei() {
@@ -193,6 +194,7 @@ function quaggerei() {
         var code = result.codeResult.code;
         var codeFormat = result.codeResult.format;
         $$("#rescode").text(codeFormat + ": " + code);
+        // var wholeUrl = "https://www.connox.de/shopsuite/warehouse/shipment/return-shipments/" + rsid;
     });
     App.init();
 }
